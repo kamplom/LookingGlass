@@ -102,7 +102,16 @@ void waylandEGLSwapBuffers(EGLDisplay display, EGLSurface surface, const struct 
       wl_surface_set_buffer_scale(wlWm.surface, 1);
       if (!wlWm.viewport)
         wlWm.viewport = wp_viewporter_get_viewport(wlWm.viewporter, wlWm.surface);
-      wp_viewport_set_source(wlWm.viewport, wl_fixed_from_int(-1), wl_fixed_from_int(-1) , wl_fixed_from_int(-1), wl_fixed_from_int(-1));
+      DEBUG_INFO("Wayland scale as dobule: %f", wl_fixed_to_double(wlWm.scale));
+      DEBUG_INFO("Wayland scale as int: %d", wl_fixed_to_double(wlWm.scale));
+      DEBUG_INFO("Wayland scale as fixed: %d", wlWm.scale);
+      DEBUG_INFO("width as fixed: %d", width);
+      DEBUG_INFO("width as int: %f", wl_fixed_to_double(width));
+      DEBUG_INFO("Multiplication original result: %d", width * wlWm.scale);
+      DEBUG_INFO("Multiplication original result to double: %d", wl_fixed_to_double(width * wlWm.scale));
+      DEBUG_INFO("Multiplication fixed to work properly: %f", wl_fixed_to_int(width * wlWm.scale));
+
+      wp_viewport_set_source(wlWm.viewport, 0, 0, wl_fixed_from_int(-1), wl_fixed_from_int(-1));
       wp_viewport_set_destination(wlWm.viewport, width, height);
     }
     else
