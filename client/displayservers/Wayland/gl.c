@@ -103,7 +103,7 @@ void waylandEGLSwapBuffers(EGLDisplay display, EGLSurface surface, const struct 
       if (!wlWm.viewport)
         wlWm.viewport = wp_viewporter_get_viewport(wlWm.viewporter, wlWm.surface);
       DEBUG_INFO("Wayland scale as dobule: %f", wl_fixed_to_double(wlWm.scale));
-      DEBUG_INFO("Wayland scale as int: %d", wl_fixed_to_double(wlWm.scale));
+      DEBUG_INFO("Wayland scale as int: %d", wl_fixed_to_int(wlWm.scale));
       DEBUG_INFO("Wayland scale as fixed: %d", wlWm.scale);
       DEBUG_INFO("width as fixed: %d", width);
       DEBUG_INFO("width as int: %f", wl_fixed_to_double(width));
