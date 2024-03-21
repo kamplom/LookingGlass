@@ -109,9 +109,9 @@ void waylandEGLSwapBuffers(EGLDisplay display, EGLSurface surface, const struct 
       DEBUG_INFO("width as int: %f", wl_fixed_to_double(width));
       DEBUG_INFO("Multiplication original result: %d", width * wlWm.scale);
       DEBUG_INFO("Multiplication original result to double: %f", wl_fixed_to_double(width * wlWm.scale));
-      DEBUG_INFO("Multiplication fixed to work properly: %d", wl_fixed_to_int(width * wlWm.scale));
-
-      wp_viewport_set_source(wlWm.viewport, 0, 0, wl_fixed_from_int(-1), wl_fixed_from_int(-1));
+      DEBUG_INFO("Multiplication fixed to work properly: %f", width * wl_fixed_to_double(wlWm.scale));
+      
+      wp_viewport_set_source(wlWm.viewport, 0, 0, wl_fixed_from_double(width * wl_fixed_to_double(wlWm.scale)+1), wl_fixed_from_double(width * wl_fixed_to_double(wlWm.scale)+1));
       wp_viewport_set_destination(wlWm.viewport, width, height);
     }
     else
